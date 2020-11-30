@@ -36,7 +36,10 @@ func TestLogicGetPetNames(t *testing.T) {
 	l := Logic{GetPetNamesStub{}}
 	for _, d := range data {
 		t.Run(d.name, func(t *testing.T) {
-			petNames, _ := l.GetPetNames(d.userID)
+			petNames, err := l.GetPetNames(d.userID)
+			if err != nil {
+				t.Error(err)
+			}
 			if diff := cmp.Diff(d.petNames, petNames); diff != "" {
 				t.Error(diff)
 			}
