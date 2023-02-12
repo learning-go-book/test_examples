@@ -12,7 +12,7 @@ func DoMath(num1, num2 int, op string) (int, error) {
 	case "-":
 		return num1 - num2, nil
 	case "*":
-		return num1 + num2, nil
+		return num1 * num2, nil
 	case "/":
 		if num2 == 0 {
 			return 0, errors.New("division by zero")
